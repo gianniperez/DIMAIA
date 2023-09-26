@@ -1,0 +1,28 @@
+= Proyecto Profesional I
+
+== Introducción
+
+La Inteligencia Artificial (IA) y el Machine Learning (ML) representan una gran revolución en muchos ámbitos, siendo uno de ellos el campo de la medicina. Estas herramientas ofrecen un potencial transformador para la atención médica al mejorar la toma de decisiones clínicas y, de esta forma, beneficiar la salud y el bienestar de los pacientes.
+
+== Objetivos del proyecto
+
+El objetivo principal de este proyecto es desarrollar un modelo de clasificación de imágenes médicas mediante el uso de técnicas de Inteligencia Artificial y Machine Learning, con el propósito de mejorar el proceso de diagnóstico en el ámbito de la salud.
+
+El proyecto se dividirá en las siguientes etapas: La recopilación y preparación de datos, el diseño y entrenamiento del modelo, la evaluación de su rendimiento, la optimización y ajustes en caso de ser necesario, la creación de una interfaz de usuario para facilitar la carga de imágenes médicas y la obtención de resultados de clasificación.
+
+Para poder lograr estos objetivos, deberemos:
+
+1. Aplicar los conocimientos adquiridos de la metodología de trabajo SAFe, y de desarrollo
+web en un proyecto práctico.
+2. Aplicar técnicas de Inteligencia Artificial (IA) y Aprendizaje Automático (Machine
+Learning) en un problema real y relevante en el campo médico.
+3. Adquirir habilidades en procesamiento y análisis de imágenes digitales.
+4. Desarrollar un modelo de clasificación de imágenes médicas para asistir a profesionales
+de la salud en el diagnóstico.
+5. Practicar la comunicación efectiva y la documentación del proceso de desarrollo. 
+
+== API Flask
+
+https://github.com/LucasPrieto30/ApiResultados
+
+API desarrollada en Flask para realizar pruebas y probar conexión con el front.
