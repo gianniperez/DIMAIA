@@ -62,6 +62,7 @@
 
         // Función para mostrar el historial en la tabla
         function mostrarHistorial(historial) {
+            historial.sort((a, b) => b.id - a.id);
             const historialTable = document.getElementById('historialTable');
             historialTable.innerHTML = ''; // Limpiar la tabla
 
