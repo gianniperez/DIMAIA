@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta a Modelo IA de cerebro</title>
+    <!-- Agrega los enlaces a Bootstrap CSS y JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Consulta Modelo IA de cerebro</h1>
+
+        <section class="bg-light p-4 border rounded">
+            <form id="consultaForm" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Cargar imagen:</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                    <label for="perdida_visual" class="form-label">Perdida Visual:</label>
+                    <select class="form-select" id="perdida_visual" name="perdida_visual">
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="convulsiones" class="form-label">Convulsiones:</label>
+                    <select class="form-select" id="convulsiones" name="convulsiones">
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="debilidad_focal" class="form-label">Debilidad Focal:</label>
+                    <select class="form-select" id="debilidad_focal" name="debilidad_focal">
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="realizarConsulta()">Enviar Consulta</button>
+            </form>
+        </section>
+
+        <div id="resultado" class="mt-4 p-4 bg-info text-white rounded">
+            <!-- Aquí se mostrará la respuesta de la API -->
+        </div>
+    </div>
+
+    <script>
+        function realizarConsulta() {
+            const form = document.getElementById('consultaForm');
+            const formData = new FormData(form);
+            // Agregar valores hardcodeados
+            formData.append('id_usuario', '5');
+            formData.append('id_medico', '5');
+
+            // Realizar la solicitud POST a la API
+            fetch('https://api-resultados.onrender.com/Diagnosticos/predecir/cerebro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                mostrarResultado(data);
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+            });
+        }
+
+        function mostrarResultado(data) {
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = ''; // Limpiar resultados anteriores
+
+            // Agregar el título "Resultado del modelo"
+            const titulo = document.createElement('h2');
+            titulo.innerText = "Resultado del modelo";
+            resultadoDiv.appendChild(titulo);
+
+            for (const categoria in data) {
+                const valor = parseFloat(data[categoria] ); // Convierte el valor a porcentaje con 2 decimales
+                const resultadoP = document.createElement('p');
+                resultadoP.innerText = `${categoria}: ${valor.toFixed(3)}%`; // Mostrar el valor como porcentaje
+                resultadoDiv.appendChild(resultadoP);
+            }
+        }
+    </script>
+</body>
+</html>

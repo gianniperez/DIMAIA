@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historial de Diagnósticos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Historial</h1>
+        <table class="table table-striped table-hover ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID del Diagnóstico</th>
+                    <th>Fecha</th>
+                    <th>Modelo</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody id="historialTable">
+                <!-- Aquí se llenarán los diagnósticos desde JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para mostrar la imagen y el resultado -->
+    <div class="modal fade" id="resultadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resultado del Diagnóstico</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalImagen" src="" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <div id="modalResultado" class="mt-4 p-4 bg-info text-white rounded">
+                                <!-- Aquí se mostrará la respuesta de la API -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cargar el historial de diagnósticos desde el endpoint
+        let historial;
+        function cargarHistorial() {
+            fetch('https://api-resultados.onrender.com/Diagnosticos/historial?id_usuario=5&rol_id=4')
+                .then(response => response.json())
+                .then(data => {
+                    historial = data.historial;
+                    mostrarHistorial(data.historial);
+                })
+                .catch(error => {
+                    console.error('Error al cargar el historial:', error);
+                });
+        }
+
+        // Función para mostrar el historial en la tabla
+        function mostrarHistorial(historial) {
+            const historialTable = document.getElementById('historialTable');
+            historialTable.innerHTML = ''; // Limpiar la tabla
+
+            historial.forEach(diagnostico => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${diagnostico.id}</td>
+                    <td>${diagnostico.fecha}</td>
+                    <td>${diagnostico.modelo_nombre}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="verResultado(${diagnostico.id})">
+                            Ver resultado
+                        </button>
+                    </td>
+                `;
+                historialTable.appendChild(row);
+            });
+        }
+
+        // Función para mostrar el resultado en un modal de Bootstrap
+        // Función para mostrar el resultado en un modal de Bootstrap
+        function verResultado(id) {
+            const resultado = historial.find(diagnostico => diagnostico.id == id).resultado;
+            const imagen = historial.find(diagnostico => diagnostico.id == id).imagen;
+            const modalImagen = document.getElementById('modalImagen');
+            modalImagen.src = "data:image/jpeg;base64," + imagen; // Asegúrate de incluir el tipo de imagen adecuado (en este caso, 'image/png')
+            console.log(modalImagen.src)
+            modalImagen.style.maxWidth = '100%'; // Limitar el ancho de la imagen al ancho del modal
+            const modalResultado = document.getElementById('modalResultado');
+            modalResultado.innerText = resultado;
+
+            modalResultado.innerHTML = ''; // Limpiar resultados anteriores
+
+            // Agregar el título "Resultado del modelo"
+            const titulo = document.createElement('h2');
+            titulo.innerText = "Resultado del modelo";
+            modalResultado.appendChild(titulo);
+            let resultadoJson = JSON.parse(resultado);
+            for (const categoria in resultadoJson) {
+                const valor = parseFloat(resultadoJson[categoria] ); // Convierte el valor a porcentaje con 2 decimales
+                const resultadoP = document.createElement('p');
+                resultadoP.innerText = `${categoria}: ${valor.toFixed(3)}%`; // Mostrar el valor como porcentaje
+                modalResultado.appendChild(resultadoP);
+            }
+
+            $('#resultadoModal').modal('show'); // Mostrar el modal
+        }
+
+        // Cargar el historial al cargar la página
+        cargarHistorial();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
