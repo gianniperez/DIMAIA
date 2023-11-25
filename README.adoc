@@ -1,4 +1,4 @@
-= Proyecto Profesional I
+= Diagnóstico de Imágenes Médicas Asistido por IA (DIMAIA)
 
 == Introducción
 
@@ -8,21 +8,120 @@ La Inteligencia Artificial (IA) y el Machine Learning (ML) representan una gran 
 
 El objetivo principal de este proyecto es desarrollar un modelo de clasificación de imágenes médicas mediante el uso de técnicas de Inteligencia Artificial y Machine Learning, con el propósito de mejorar el proceso de diagnóstico en el ámbito de la salud.
 
-El proyecto se dividirá en las siguientes etapas: La recopilación y preparación de datos, el diseño y entrenamiento del modelo, la evaluación de su rendimiento, la optimización y ajustes en caso de ser necesario, la creación de una interfaz de usuario para facilitar la carga de imágenes médicas y la obtención de resultados de clasificación.
+Para poder lograr estos objetivos, aplicamos:
 
-Para poder lograr estos objetivos, deberemos:
-
-1. Aplicar los conocimientos adquiridos de la metodología de trabajo SAFe, y de desarrollo
-web en un proyecto práctico.
-2. Aplicar técnicas de Inteligencia Artificial (IA) y Aprendizaje Automático (Machine
-Learning) en un problema real y relevante en el campo médico.
-3. Adquirir habilidades en procesamiento y análisis de imágenes digitales.
-4. Desarrollar un modelo de clasificación de imágenes médicas para asistir a profesionales
+1. Los conocimientos adquiridos de la metodología de trabajo SAFe, y de desarrollo web en un proyecto práctico.
+2. Técnicas de Inteligencia Artificial (IA) y Aprendizaje Automático (Machine Learning) en un problema real y relevante en el campo médico.
+3. Habilidades en procesamiento y análisis de imágenes digitales.
+4. Desarrollo de un modelo de clasificación de imágenes médicas para asistir a profesionales
 de la salud en el diagnóstico.
-5. Practicar la comunicación efectiva y la documentación del proceso de desarrollo. 
+5. Comunicación efectiva y documentación del proceso de desarrollo. 
+
+== Equipo de trabajo
+
+Nuestro equipo de trabajo "Datacript" es el que brinda la gestión y seguridad de datos necesaria al sistema, para que este pueda aprovechar en su totalidad la potencia de la IA a partir de datos seguros y fiables.
+
+.Datacript
+image::logo datacript.png[]
+
+Datacript está conformado por:
+
+- Product Owner: Leandro Dikenstein
+- Scrum Master: Giannina Perez
+- Líder Técnico: Lucas Prieto
+- Desarrolladora: Micaela Benitez
+- Desarrolladora: Yamila Benitez
+- Desarrollador: Nahuel Clauser
+- Desarrollador: Franco Torrico
+- Tester: Federico Gómez
+
+== Metodología SAFe
+
+Vamos a estar llevando a cabo la metodología SAFe para gestionar el trabajo entre nuestro equipo de datos, el equipo de UX y los equipos encargados de realizar los modelos para la clasificación de imágenes médicas. De esta manera, vamos a poder agilizar la colaboración entre los equipos, además de aumentar la productividad y calidad de las entregas de trabajo.
+
+== Metodología Scrum
+
+En nuestro equipo de trabajo hemos optado por utilizar la metodología ágil Scrum, en donde coordinaremos nuestro espacio de trabajo y tareas a realizar.
+
+== Misión
+La misión de nuestro equipo es proporcionar un soporte eficaz para la gestión de los datos médicos cruciales para crear el modelo de clasificación de imágenes médicas. De esta manera, garantizamos que los datos médicos sean manejados con la máxima eficiencia y seguridad, y que estén disponibles para impulsar un diagnóstico de salud más preciso y confiable.
+
+== Visión
+Nuestra visión es facilitar la toma de decisiones informadas en el campo médico, mejorando la calidad de vida de los pacientes y apoyando la investigación médica.
+
+== Alcance
+Nuestro equipo, enfocado en la funcionalidad de los datos, tiene un papel importante en el éxito de este proyecto. El alcance de nuestras responsabilidades abarca varios aspectos esenciales para garantizar la seguridad y la eficacia del sistema:
+
+- Gestión de Datos:
+
+* Almacenamiento seguro de conjuntos de datos de imágenes médicas etiquetadas.
+* Establecimiento de un proceso de gestión de datos maestros para garantizar la coherencia y la calidad de los datos utilizados en el sistema.
+
+- Seguridad de Datos
+* Implementar medidas de seguridad de datos para prevenir el acceso no autorizado y los riesgos cibernéticos.
+* Implementación de técnicas de cifrado para proteger los datos médicos sensibles durante el almacenamiento y la transmisión de los mismos.
+
+- Colaboración Interdisciplinaria
+* Colaborar estrechamente con los equipos de desarrollo de IA y ML para garantizar la coherencia de datos y modelos.
+* Colaborar con el equipo de UX/UI para disponibilizar los datos de la manera más adecuada para ser consumidos desde la interfaz.
+* Colaborar en la definición y desarrollo de la Arquitectura del Sistema.
+
+Nuestro equipo se compromete a garantizar que los datos médicos sean manejados de manera segura, eficiente y ética, lo que es esencial para el éxito del proyecto de clasificación automática de imágenes médicas y para el beneficio de los pacientes y profesionales de la salud.
+
+== Requerimientos Funcionales
+1. Gestión de Auditores
+- El sistema debe crear y enviar un código por e-mail para que el auditor pueda crear su contraseña en su primer ingreso.
+- El sistema debe permitirle al auditor el acceso al perfil.
+- El sistema debe permitirle al auditor la carga de informes.
+- El sistema debe permitirle al auditor la carga de imágenes.
+- El sistema debe permitirle al auditor el acceso al historial.
+- El sistema debe permitirle al auditor el acceso a los datos cifrados.
+
+2. Gestión de Administradores
+- El sistema debe permitir dar de alta, dar de baja y modificar un usuario de auditor, profesional de la salud o médico.
+
+3. Gestión de Profesionales de la Salud
+- El sistema debe crear y enviar un código por e-mail para que el profesional pueda crear su contraseña en su primer ingreso.
+- El sistema debe permitirle al profesional el acceso al perfil.
+- El sistema debe permitirle al profesional la carga de informes.
+- El sistema debe permitirle al profesional la carga de imágenes.
+
+4. Gestión de Médicos
+- El sistema debe crear y enviar un código por e-mail para que el médico pueda crear su contraseña en su primer ingreso.
+- El sistema debe permitirle al médico el acceso al perfil.
+- El sistema debe permitirle al médico el acceso al historial.
+- El sistema debe permitirle al médico el acceso a los resultados de las clasificaciones  de imágenes médicas.
+- El sistema debe permitirle al médico hacer feedback del modelo, una vez realizada su predicción.
+
+5. Cifrado de datos
+- Los datos privados y sensibles de los usuarios y pacientes médicos deben estar cifrados.
+
+6. Gestión de permisos y accesos
+- Definición de roles y permisos de usuario para garantizar el acceso adecuado a la información.
+- Restricción de acceso a datos cifrados solo a usuarios autorizados.
+- Restricción de acceso a la API solo a usuarios autorizados.
+
+== Requerimientos No Funcionales
+
+1. Seguridad
+- Cumplimiento de los estándares de cifrado y seguridad para proteger la información de los usuarios y pacientes médicos.
+
+== Indicadores utilizados en la Gestión del proyecto
+- Burndown Chart: Ayudará al equipo a rastrear y gestionar eficazmente el progreso en la resolución de problemas, lo que contribuye a la calidad del software y al cumplimiento de los objetivos del proyecto, así también como una herramienta adicional para ver el progreso del desarrollo.
+- Evolución de la prueba: Servirá para llevar un control de los bugs encontrados durante los Sprints. Este indicador tendrá en cuenta la cantidad de bugs encontrados, cerrados, pendientes y cancelados.
+- Historias terminadas: Este indicador nos ayudará a considerar la cantidad de tareas terminadas críticas (3), esenciales (2) y deseables (1).
+- Horas imputadas: A partir de un presupuesto fijado, se gestionará la cantidad de horas imputadas por roles. Gracias a este indicador, podremos obtener un acercamiento a lo que debería costar nuestras horas trabajadas y en general, el proyecto entero.
+- Índice de Mitigación: Se agregó este indicador para mostrar los resultados de las medidas de mitigación planificadas.
+- Nivel de Riesgo: Se utilizará para evaluar y cuantificar el grado de incertidumbre o posibles problemas que pueden afectar al proyecto. Contribuye a una mayor calidad en la gestión del proyecto y a la reducción de problemas que puedan afectar la calidad final del entregable.
 
 == API Flask
 
 https://github.com/LucasPrieto30/ApiResultados
 
-API desarrollada en Flask para realizar pruebas y probar conexión con el front.
+API desarrollada en Flask para la integración con el front.
+
+== DIMAIA
+
+https://dimaia.vercel.app/
+
+Host del Diagnóstico de Imágenes Médicas Asistido por IA (DIMAIA)
